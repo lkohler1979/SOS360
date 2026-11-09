@@ -68,8 +68,8 @@ async function proxy(req: NextRequest, params: Params['params'], method: 'GET' |
     if (isLogin && payload && typeof payload === 'object' && 'token' in payload && typeof payload.token === 'string') {
       tokenFromApi = payload.token;
     }
-    const safePayload = payload && typeof payload === 'object'
-      ? { ...payload as Record<string, unknown> }
+    const safePayload: Record<string, unknown> = payload && typeof payload === 'object'
+      ? { ...(payload as Record<string, unknown>) }
       : { error: 'invalid_api_response' };
     delete safePayload.token;
     const response = NextResponse.json(safePayload, { status: upstream.status });
