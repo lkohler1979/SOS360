@@ -5,7 +5,7 @@ App mobile-first de preparação familiar e aventura com áreas **SOS Family (ve
 **Site:** https://sos360.up.railway.app
 **Projeto Railway:** https://railway.com/project/428e6143-a2e5-4013-bd24-06f7bb127143
 
-> **Status:** MVP local-first em evolução. O dashboard, kit 72h, plano familiar, contatos, SOS Academy e backup JSON existem no código. O novo módulo Água e Alimentação foi implementado e requer validação de seu deploy. Autenticação, dados compartilhados em banco e offline PWA completo ainda não estão prontos. Não é um serviço de emergência.
+> **Status:** MVP local-first em evolução. O dashboard, kit 72h, plano familiar, contatos, SOS Academy e backup JSON existem no código. O novo módulo Água e Alimentação foi implementado e seu deploy Railway terminou SUCCESS; faltam testes funcionais. Autenticação, dados compartilhados em banco e offline PWA completo ainda não estão prontos. Não é um serviço de emergência.
 
 ## Documentos para continuar nesta ou em outra IA
 
@@ -42,4 +42,4 @@ Front local: http://localhost:3000. API local: http://localhost:3001/health.
 
 ## Próximo passo prioritário
 
-Verificar o deployment do módulo Água e Alimentação, testar app e backup, adicionar CI e seguir para PostgreSQL/autenticação/API com isolamento seguro de dados. Ver [TASKS.md](TASKS.md).
+Testar o módulo Água e Alimentação em navegador e backup (deploy já SUCCESS), adicionar CI e seguir para PostgreSQL/autenticação/API com isolamento seguro de dados. Ver [TASKS.md](TASKS.md).
