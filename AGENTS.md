@@ -38,3 +38,12 @@ Projeto de emergência: não prometer orientação infalível ou socorro; citar 
 5. Provisionar PostgreSQL, Prisma migrations e auth com permissão adequada.
 6. Desenvolver API/integração e migração local -> servidor, com testes.
 7. Atualizar TASKS.md e EPICS.md **no mesmo PR** a cada entrega; não marcar [x] antes de validar.
+
+
+## Decisão visual obrigatória — ZIP do usuário
+Nova referência de UI: `sos360-interface.zip` (fornecido em conversa, ainda NÃO commitado no repo). Ele inclui `index.html`, `css/styles.css`, `js/app.js`, fotos e screenshots. A branch `feature/visual-navigation-family-advanced` implementa o fluxo em React/Next, mantendo a lógica funcional. Consulte [ROADMAP.md](ROADMAP.md).
+- Não remover kit, plano familiar, contatos, suprimentos, Academy, backup ou dados no localStorage.
+- A home é escolha neutra; Family vermelho; Advanced verde; navegação bottom 4 itens e Mais fullscreen.
+- Versão atual é trabalho em branch, 13 fotos individuais e 7 arquivos de marca/ícones oficiais já estão no repo, com CSS atualizado; testes visuais e revisão mobile pendentes. Não afirmar deploy de UI nova antes de merge e validação.
+- A branch backend `feature/postgres-auth-sync-foundation` é paralela e experimental, ainda não deve ir a produção.
+- Para retomar: completar SOS-050–054, validar interface, revisar PR; depois retomar backend com segurança.

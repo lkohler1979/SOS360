@@ -57,3 +57,11 @@ Administração, assinaturas, auditoria, métricas de produto, suporte e políti
 3. PWA offline + testes e conteúdo revisado (EPIC-01 + EPIC-06).
 4. Recursos de segurança Family antes de ampliar o Advanced (EPIC-04).
 5. Advanced operacional e demais recursos (EPIC-05+).
+
+
+## EPIC-11 — UI fiel ao protótipo aprovado [PARCIAL / FEATURE BRANCH]
+**Fonte:** ZIP `sos360-interface.zip`, README, CSS, JavaScript, SVG, screenshots e imagens. Requisito: fluxo Home neutro → Family/Advanced; cor da área inteira; preferências persistidas; 6 itens por módulo; barra inferior de 4 atalhos; Mais fullscreen com 14 ícones e 10 cards fotográficos. Preservar recursos local-first existentes.
+**Concluído no código da branch:** tela de escolha, cartões, layout por área, rodapé, menu Mais, ícones SVG e rotas para funcionalidades antigas. **Pendente:** substituir montagem fotográfica de prévia já commitada pelos 13 arquivos originais otimizados, testes responsivos e funcionais, comparação com screenshots, merge/deploy. [ROADMAP.md](ROADMAP.md).
+
+## EPIC-12 — Conteúdo e ferramentas das novas áreas [PENDENTE]
+São lacunas da referência visual: Saúde e Primeiros Socorros, Casa Segura, Crianças e Idosos, Navegação/Mapas offline, Abrigo, Água no Campo, Alimentação no Ambiente, equipamentos Advanced, segurança, fogo, comunicação, alertas de risco. Os itens atuais não equivalem a funcionalidades implementadas quando encaminham a Academy ou mostram placeholders. Aceite: conteúdo confiável com fontes, revisão, uso adequado offline e testes.

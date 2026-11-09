@@ -59,3 +59,30 @@ Não declarar pronta até SOS-006/008, SOS-021–029, SOS-030/031, SOS-034–036
 
 ## Status Railway na escrita
 Web e API ONLINE; o novo deploy web de Água e Alimentação (ID 6df0a391-17b6-4432-b3e9-9f7c50a25a13) finalizou SUCCESS. A navegação real e os fluxos ainda exigem smoke/E2E.
+
+
+## Sprint UI do ZIP aprovado — EPIC-11 / EPIC-12 (2026-11-09)
+- [x] SOS-043 Criar branch de UI a partir de main, sem sobrescrever código funcional.
+- [x] SOS-044 Home de escolha de acesso Family/Advanced, visual escuro, seis atalhos.
+- [x] SOS-045 Páginas de módulos com seis itens e troca global vermelho/verde.
+- [x] SOS-046 Persistência da última área escolhida (chave `sos360:last-area`).
+- [x] SOS-047 Rodapé com Início/Academy/Mapas/Mais e botão voltar à escolha.
+- [x] SOS-048 Menu Mais em tela cheia, grid de 14 ícones e 10 cards, com cores da área.
+- [x] SOS-049 Portar ícones SVG de traço para componente React; manter funções existentes acessíveis.
+- [x] SOS-050 Substituir montagem provisória por 3 heroes e 10 cards JPG individuais otimizados, provenientes das imagens mais recentes fornecidas pelo usuário, em `apps/web/public/interface/img/`. Fotos em background CSS com texto acessível nos botões.
+- [ ] SOS-051 Comparar as 5 capturas do ZIP com app React em mobile/desktop e corrigir diferenças.
+- [ ] SOS-052 Executar typecheck/build, E2E dos caminhos, localStorage/import/export e accessibility.
+- [ ] SOS-053 Publicação da atualização de imagens no Railway (CI, build, health, HTTP externo e validação visual); depois merge do PR em main conforme aprovação.
+- [ ] SOS-054 Migrar a preferência antiga `sos360.module` (ZIP) para `sos360:last-area` quando houver dados.
+- [ ] SOS-055 Conteúdo Family Saúde e Primeiros Socorros revisado e seguro.
+- [ ] SOS-056 Conteúdo Casa Segura (energia, água, saneamento, proteção).
+- [ ] SOS-057 Plano especial Crianças, Idosos e outras necessidades.
+- [ ] SOS-058 Mapas/Orientação Advanced, fontes verificadas e cache offline.
+- [ ] SOS-059 Água no Campo e Alimentação Ambiente: conteúdo revisado com alertas sanitários.
+- [ ] SOS-060 Abrigo, Fogo, Equipamentos e prevenção de riscos no Advanced.
+- [ ] SOS-061 Alertas e Riscos oficiais por região com origem/hora e avisos adequados.
+- [ ] SOS-062 Comunicação, planejamento e rotinas de contato/segurança.
+- [ ] SOS-063 Reavaliar protótipo vs PRD e matrizes de cobertura a cada release.
+- [x] SOS-064 Inserir fotos reais do ZIP em preview JPEG compacto (montagem 3 hero + 10 tiles) e aplicar aos cartões por CSS. Ver [ROADMAP.md](ROADMAP.md).
+
+**Atenção:** existe trabalho experimental independente em `feature/postgres-auth-sync-foundation`. Autenticação e sincronização ainda NÃO estão prontas; integração posterior deve preservar a interface aprovada e ser submetida a revisão/testes de segurança.
