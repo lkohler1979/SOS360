@@ -1,0 +1,14 @@
+{
+  "name": "sos360",
+  "private": true,
+  "packageManager": "npm@10.9.2",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:web": "npm run dev -w @sos360/web",
+    "dev:api": "npm run dev -w @sos360/api",
+    "build": "npm run build --workspaces --if-present"
+  }
+}
