@@ -69,7 +69,7 @@ Web e API ONLINE; o novo deploy web de Água e Alimentação (ID 6df0a391-17b6-4
 - [x] SOS-047 Rodapé com Início/Academy/Mapas/Mais e botão voltar à escolha.
 - [x] SOS-048 Menu Mais em tela cheia, grid de 14 ícones e 10 cards, com cores da área.
 - [x] SOS-049 Portar ícones SVG de traço para componente React; manter funções existentes acessíveis.
-- [ ] SOS-050 Commitar 3 hero e 10 fotos reais do ZIP, otimização, alt e carregamento responsivo.
+- [ ] SOS-050 Commitar 3 hero e 10 fotos reais INDIVIDUAIS do ZIP, com qualidade de produção, otimização, alt e carregamento responsivo. Prévia de montagem compactada já foi incluída.
 - [ ] SOS-051 Comparar as 5 capturas do ZIP com app React em mobile/desktop e corrigir diferenças.
 - [ ] SOS-052 Executar typecheck/build, E2E dos caminhos, localStorage/import/export e accessibility.
 - [ ] SOS-053 PR aprovado, merge e deploy com HTTP 200 validado no endereço público.
@@ -82,6 +82,7 @@ Web e API ONLINE; o novo deploy web de Água e Alimentação (ID 6df0a391-17b6-4
 - [ ] SOS-060 Abrigo, Fogo, Equipamentos e prevenção de riscos no Advanced.
 - [ ] SOS-061 Alertas e Riscos oficiais por região com origem/hora e avisos adequados.
 - [ ] SOS-062 Comunicação, planejamento e rotinas de contato/segurança.
-- [ ] SOS-063 Reavaliar protótipo vs PRD e matrizes de cobertura a cada release. Ver [ROADMAP.md](ROADMAP.md).
+- [ ] SOS-063 Reavaliar protótipo vs PRD e matrizes de cobertura a cada release.
+- [x] SOS-064 Inserir fotos reais do ZIP em preview JPEG compacto (montagem 3 hero + 10 tiles) e aplicar aos cartões por CSS. Ver [ROADMAP.md](ROADMAP.md).
 
 **Atenção:** existe trabalho experimental independente em `feature/postgres-auth-sync-foundation`. Autenticação e sincronização ainda NÃO estão prontas; integração posterior deve preservar a interface aprovada e ser submetida a revisão/testes de segurança.
