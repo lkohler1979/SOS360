@@ -137,10 +137,15 @@ app.put('/api/v1/state', async (req,reply) => {
   const b = isRecord(req.body) ? req.body : {};
   if (!Number.isSafeInteger(b.version) || (b.version as number) < 0 || !validState(b.data)) return reply.code(400).send({error:'invalid_state'});
   const version = b.version as number;
-  const result = await pool!.query(
-    'INSERT INTO sos_state(user_id,payload,version) SELECT $1,$2::jsonb,1 WHERE $3=0 ON CONFLICT(user_id) DO UPDATE SET payload=EXCLUDED.payload,version=sos_state.version+1,updated_at=now() WHERE sos_state.version=$3 RETURNING version',
-    [id,JSON.stringify(b.data),version]
-  );
+  const result = version === 0
+    ? await pool!.query(
+        'INSERT INTO sos_state(user_id,payload,version) VALUES($1,$2::jsonb,1) ON CONFLICT(user_id) DO NOTHING RETURNING version',
+        [id,JSON.stringify(b.data)]
+      )
+    : await pool!.query(
+        'UPDATE sos_state SET payload=$2::jsonb,version=version+1,updated_at=now() WHERE user_id=$1 AND version=$3 RETURNING version',
+        [id,JSON.stringify(b.data),version]
+      );
   if (!result.rowCount) {
     const current = await pool!.query('SELECT version FROM sos_state WHERE user_id=$1',[id]);
     return reply.code(409).send({error:'version_conflict',version:current.rows[0]?.version ?? 0});
