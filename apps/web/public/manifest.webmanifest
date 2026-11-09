@@ -3,8 +3,21 @@
   "short_name": "SOS360",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f5f7f8",
-  "theme_color": "#17242a",
+  "background_color": "#101a19",
+  "theme_color": "#17191b",
   "lang": "pt-BR",
-  "icons": []
+  "icons": [
+    {
+      "src": "/interface/brand/sos360-icone-app.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/interface/brand/sos360-icone-app-1024.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
 }
