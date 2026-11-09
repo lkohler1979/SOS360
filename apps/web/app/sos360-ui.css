@@ -45,3 +45,17 @@
 .sos-shortcut-icon .sos-icon{width:30px;height:30px}
 .sos-icon-grid .sos-icon{width:28px;height:28px}
 @media(max-width:720px){.sos-module-photo .sos-icon{width:104px;height:104px}}
+
+/* Functional photo previews. This small montage is composed exclusively of the 3 hero
+   and 10 card photographs in the user's uploaded interface package.
+   The full-resolution 13 source images remain an enhancement task (SOS-050). */
+.sos-welcome{background-image:linear-gradient(90deg,#081519f2 0%,#0d1d24a9 48%,#07101640),url('/interface/sprite-mini.jpg');background-size:cover,300% 340%;background-position:center,0% 0%}
+.sos-module-hero.is-family{background-image:linear-gradient(90deg,#7a0e0ef5 0%,#7a0e0ed9 46%,#7a0e0e28),url('/interface/sprite-mini.jpg');background-size:cover,300% 340%;background-position:center,50% 0%}
+.sos-module-hero.is-advanced{background-image:linear-gradient(90deg,#0f4424f5 0%,#0f4424d9 46%,#0f442428),url('/interface/sprite-mini.jpg');background-size:cover,300% 340%;background-position:center,100% 0%}
+.sos-photo-tile{background-image:linear-gradient(0deg,#050809bd,transparent 70%),url('/interface/sprite-mini.jpg')!important;background-size:cover,500% 283.333%;background-repeat:no-repeat}
+.sos-photo-tile:nth-child(5n+1){background-position:center,0% 45.4545%}
+.sos-photo-tile:nth-child(5n+2){background-position:center,25% 45.4545%}
+.sos-photo-tile:nth-child(5n+3){background-position:center,50% 45.4545%}
+.sos-photo-tile:nth-child(5n+4){background-position:center,75% 45.4545%}
+.sos-photo-tile:nth-child(5n){background-position:center,100% 45.4545%}
+.sos-photo-tile:nth-child(n+6):nth-child(-n+10){background-position-y:center,100%}
