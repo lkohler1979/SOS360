@@ -74,3 +74,7 @@ Fonte de design: ZIP enviado pelo usuário **sos360-interface.zip** com index.ht
 - UI: feature/visual-navigation-family-advanced (esta entrega; não publicar antes de testar).
 - Backend experimental anterior: feature/postgres-auth-sync-foundation. NÃO mesclar sem revisão: API/auth/sync ainda não foi testada ou conectada a DB; frontend/cloud sync incompleto.
 - main: versão publicada anterior, manter estabilidade.
+
+
+## Dependência operacional — PostgreSQL (2026-11-09)
+A etapa backend está bloqueada: o Railway Free recusou provisionar `sos360-postgres` por limite de recursos. A branch `feature/cloud-storage-integration` implementa código inicial de cadastro e estado persistente, mas **não existe banco operacional**. Prioridade de execução: liberar recurso/upgrade -> Postgres com volume -> DATABASE_URL -> testes de segurança e dois dispositivos -> merge/deploy. Manter interface local intacta até validação.
