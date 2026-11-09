@@ -69,10 +69,10 @@ Web e API ONLINE; o novo deploy web de Água e Alimentação (ID 6df0a391-17b6-4
 - [x] SOS-047 Rodapé com Início/Academy/Mapas/Mais e botão voltar à escolha.
 - [x] SOS-048 Menu Mais em tela cheia, grid de 14 ícones e 10 cards, com cores da área.
 - [x] SOS-049 Portar ícones SVG de traço para componente React; manter funções existentes acessíveis.
-- [ ] SOS-050 Commitar 3 hero e 10 fotos reais INDIVIDUAIS do ZIP, com qualidade de produção, otimização, alt e carregamento responsivo. Prévia de montagem compactada já foi incluída.
+- [x] SOS-050 Substituir montagem provisória por 3 heroes e 10 cards JPG individuais otimizados, provenientes das imagens mais recentes fornecidas pelo usuário, em `apps/web/public/interface/img/`. Fotos em background CSS com texto acessível nos botões.
 - [ ] SOS-051 Comparar as 5 capturas do ZIP com app React em mobile/desktop e corrigir diferenças.
 - [ ] SOS-052 Executar typecheck/build, E2E dos caminhos, localStorage/import/export e accessibility.
-- [ ] SOS-053 PR aprovado, merge e deploy com HTTP 200 validado no endereço público.
+- [ ] SOS-053 Publicação da atualização de imagens no Railway (CI, build, health, HTTP externo e validação visual); depois merge do PR em main conforme aprovação.
 - [ ] SOS-054 Migrar a preferência antiga `sos360.module` (ZIP) para `sos360:last-area` quando houver dados.
 - [ ] SOS-055 Conteúdo Family Saúde e Primeiros Socorros revisado e seguro.
 - [ ] SOS-056 Conteúdo Casa Segura (energia, água, saneamento, proteção).
