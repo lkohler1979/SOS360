@@ -47,3 +47,11 @@ Nova referência de UI: `sos360-interface.zip` (fornecido em conversa, ainda NÃ
 - Versão atual é trabalho em branch, 13 fotos individuais e 7 arquivos de marca/ícones oficiais já estão no repo, com CSS atualizado; testes visuais e revisão mobile pendentes. Não afirmar deploy de UI nova antes de merge e validação.
 - A branch backend `feature/postgres-auth-sync-foundation` é paralela e experimental, ainda não deve ir a produção.
 - Para retomar: completar SOS-050–054, validar interface, revisar PR; depois retomar backend com segurança.
+
+
+## Branch PostgreSQL e limite Railway (2026-11-09)
+- `feature/cloud-storage-integration` contém o primeiro fluxo de API auth/sessões/estado JSONB + UI cloud; **não mesclar nem publicar sem banco real e testes**.
+- No projeto Railway de produção, tentativas de template PostgreSQL não criaram serviço; criação dedicada `sos360-postgres` falhou por limite Free: `Free plan resource provision limit exceeded`. A interface atual continua salvando em localStorage.
+- Após liberar capacidade, provisionar **Postgres com volume persistente**, configurar `DATABASE_URL` somente por referência de variável privada do Railway no serviço API, validar /health e integração completa. NÃO usar dados/volume do SevenBible.
+- Para web, configurar `SOS360_API_URL` apontando para a API interna no Railway; default público serve para desenvolvimento, mas preferir rede privada na produção.
+- Verificar sessões HttpOnly, cookies SameSite Strict, autorização, versionamento `sos_state`, comportamento de conflitos 409, e revisão de segurança antes de permitir conta real.
