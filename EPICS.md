@@ -20,7 +20,7 @@ Aceite: dados isolados por usuário, persistência confiável e plano imprimíve
 
 ## EPIC-03 — Água, alimentos e provisões [IMPLEMENTADO NO CÓDIGO / DEPLOY EM VALIDAÇÃO]
 Feito: módulo calculadora pessoas/dias, água 3 L/pessoa/dia, 3 refeições/pessoa/dia, estoque existente, faltantes, progresso e checklist, integração com localStorage/backup. Commit final anterior à documentação: 11dc8f0.
-Falta: confirmar deploy e testes, estoque com validade, preferências individuais, revisão de parâmetros por referências oficiais, lista de compras, alertas.
+Falta: testes funcionais pós-deploy (Railway SUCCESS em 2026-11-09), estoque com validade, preferências individuais, revisão de parâmetros por referências oficiais, lista de compras, alertas.
 Aceite: cálculos e dados persistem, há aviso de estimativas e acessibilidade.
 
 ## EPIC-04 — Segurança e resposta familiar [PENDENTE]
