@@ -19,7 +19,7 @@ Fechar SOS-017 (verificar deploy do módulo Family Água e Alimentação) e depo
 - Web service: 08bc6294-8133-4d55-898e-7f8aca0bfeff; domínio https://sos360.up.railway.app, **targetPort 8080**. Start: npm run start -w @sos360/web; build: npm install && npm run build -w @sos360/web.
 - API service: aeb4f3cb-56ee-4634-bb76-45b7f45f5367; domínio https://sos360-beta-api-production.up.railway.app; build: npm install && npm run build -w @sos360/api; start: npm run start -w @sos360/api. Verificar PORT emitido nos logs antes de validar domain targetPort.
 - SevenBible (service 4a6c3f91-5999-413f-8fdf-059c66e8c15f) é serviço NÃO relacionado: NÃO alterar, excluir, reconfigurar ou usar recursos dele.
-- Última checagem do novo build de Água e Alimentação: deployment 6df0a391-17b6-4432-b3e9-9f7c50a25a13 em BUILDING; a UI anterior SUCCESS. Reconsultar Railway.
+- Checagem de 2026-11-09: deployment Água e Alimentação 6df0a391-17b6-4432-b3e9-9f7c50a25a13 SUCCESS, web/API ONLINE; ainda não foram executados smoke HTTP externo e testes funcionais. Reconsultar Railway.
 
 ## Desenvolvimento
 Local: npm install; npm run dev:web; npm run dev:api. Confirmar comandos de package.json. Não assumir que builds foram testados localmente. Adicionar typecheck/test/lint/CI.
