@@ -54,5 +54,5 @@ A partir do ZIP original `sos360-interface.zip` enviado pelo usuário, o **fluxo
 - Mais usa a paleta ativa em tela inteira, desenho cartográfico decorativo, 14 ícones SVG e 10 cards fotográficos.
 - O app deve preservar kit, plano, contatos, água/alimentos, guias e backup — não substituir trabalho funcional por placeholders.
 - Itens ainda não funcionais devem informar claramente estágio; mapa/alerta não devem alegar dados em tempo real.
-- Fotos do ZIP estão representadas por uma montagem JPEG de baixa resolução no repositório e exibidas nos heróis/cards. **Para release final**, versionar e usar separadamente as 13 fotos originais com qualidade adequada. Os screenshots de referência estão somente no ZIP original; navegação, estilo e símbolos SVG foram implementados na branch.
+- Fotografias foram substituídas pelas 13 imagens individuais recém-enviadas e aprovadas pelo usuário, com caminhos estáveis em `apps/web/public/interface/img/`. Sete assets de marca/ícones foram incluídos em `apps/web/public/interface/brand/`. O CSS não utiliza mais a montagem temporária. Verificar responsividade/recortes pós-deploy.
 - A referência de UI inclui novos recursos não concluídos: segurança doméstica, necessidades de crianças e idosos, comunicação, fogo, abrigo, navegação/mapas e riscos/alertas. Critérios e fases em [ROADMAP.md](ROADMAP.md).
