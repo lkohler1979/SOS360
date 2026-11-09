@@ -79,7 +79,7 @@ export default function Home(){
  return <div className={'sos-experience '+(advanced?'theme-advanced':mode?'theme-family':'theme-neutral')}>
   <SOSIconSprite/>
   <header className="sos-header">
-   <button type="button" className="sos-brand" onClick={back} aria-label="SOS360 - escolher tipo de acesso"><span className="sos-brand-mark">✚</span> SOS<span>360</span><small>PREPARAÇÃO • PROTEÇÃO • SOBREVIVÊNCIA</small></button>
+   <button type="button" className="sos-brand" onClick={back} aria-label="SOS360 - escolher tipo de acesso"><img src="/interface/brand/sos360-logo-sem-slogan.png" alt="SOS360" width={190} height={60}/><small>PREPARAÇÃO • PROTEÇÃO • SOBREVIVÊNCIA</small></button>
    <span className="sos-header-pill">{mode===null?'ESCOLHA SUA JORNADA':advanced?'● ADVANCED':'● FAMILY'}</span>
   </header>
   <div className="sos-layout">
