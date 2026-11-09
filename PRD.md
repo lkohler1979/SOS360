@@ -56,3 +56,9 @@ A partir do ZIP original `sos360-interface.zip` enviado pelo usuário, o **fluxo
 - Itens ainda não funcionais devem informar claramente estágio; mapa/alerta não devem alegar dados em tempo real.
 - Fotografias foram substituídas pelas 13 imagens individuais recém-enviadas e aprovadas pelo usuário, com caminhos estáveis em `apps/web/public/interface/img/`. Sete assets de marca/ícones foram incluídos em `apps/web/public/interface/brand/`. O CSS não utiliza mais a montagem temporária. Verificar responsividade/recortes pós-deploy.
 - A referência de UI inclui novos recursos não concluídos: segurança doméstica, necessidades de crianças e idosos, comunicação, fogo, abrigo, navegação/mapas e riscos/alertas. Critérios e fases em [ROADMAP.md](ROADMAP.md).
+
+
+## Backend persistente — estágio de implementação (2026-11-09)
+A gravação com contas está em desenvolvimento na branch `feature/cloud-storage-integration`: API Fastify com tabela `sos_users` (senha scrypt + salt), `sos_sessions` (hash de token) e `sos_state` (snapshot JSONB da família, checklist, plano e provisões, versionado). O frontend oferece conta e vínculo explícito, sincronização automática com aviso de conflitos e sessão em cookie HttpOnly por proxy Next.js. **Esses recursos ainda não estão publicados nem testados com banco real.**
+
+Bloqueio real no Railway: o projeto contém somente serviços web/API; a criação de `sos360-postgres` foi recusada com mensagem **Free plan resource provision limit exceeded. Please upgrade to provision more resources!**. Sem serviço Postgres, nenhuma gravação em nuvem foi ativada. Para habilitar: liberar capacidade/upgrade, criar Postgres com volume, configurar DATABASE_URL na API, publicar branch validada e executar E2E. Não substituir ou alterar serviços de outros sistemas. Ver [TASKS.md](TASKS.md) SOS-065–074.
