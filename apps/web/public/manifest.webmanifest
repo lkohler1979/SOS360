@@ -1,0 +1,10 @@
+{
+  "name": "SOS360 — Preparação e Sobrevivência",
+  "short_name": "SOS360",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f7f8",
+  "theme_color": "#17242a",
+  "lang": "pt-BR",
+  "icons": []
+}
