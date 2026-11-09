@@ -34,7 +34,7 @@ export default function Home(){
  const [data,setData]=useState<Data>(defaults),[loaded,setLoaded]=useState(false),[tab,setTab]=useState('home');
  const [itemText,setItemText]=useState(''),[name,setName]=useState(''),[phone,setPhone]=useState(''),[role,setRole]=useState(''),[notice,setNotice]=useState('');
  const [mode,setMode]=useState<'family'|'advanced'|null>(null),[moreOpen,setMoreOpen]=useState(false);
- useEffect(()=>{try{const last=localStorage.getItem('sos360:last-area');if(last==='family'||last==='advanced')setMode(last)}catch{}},[]);
+ useEffect(()=>{try{const last=localStorage.getItem('sos360:last-area')||localStorage.getItem('sos360.module');if(last==='family'||last==='advanced'){setMode(last);localStorage.setItem('sos360:last-area',last)}}catch{}},[]);
  useEffect(()=>{try{const saved=localStorage.getItem('sos360:v1');if(saved){const parsed:unknown=JSON.parse(saved);if(validData(parsed))setData({...defaults,...parsed,supplies:{...defaultSupplies,...parsed.supplies}})}else{const legacy=localStorage.getItem('sos360:kit72h:v1');if(legacy){const old=JSON.parse(legacy) as Item[];if(Array.isArray(old))setData({...defaults,kit:defaults.kit.map((x,i)=>({...x,checked:Boolean(old[i]?.checked)}))})}}}catch{}setLoaded(true)},[]);
  useEffect(()=>{if(loaded){try{localStorage.setItem('sos360:v1',JSON.stringify(data));setNotice('Dados salvos neste dispositivo')}catch{setNotice('Armazenamento indisponível; exporte uma cópia')}}},[data,loaded]);
  const done=data.kit.filter(i=>i.checked).length;
@@ -75,7 +75,7 @@ export default function Home(){
   ['☷','ALIMENTAÇÃO','supplies'],['△','ABRIGO','academy'],['✚','PRIMEIROS SOCORROS','academy'],
   ['▤','COMUNICAÇÃO','contacts'],['⚠','RISCOS E DESASTRES','risks'],['♧','PREPARAÇÃO FAMILIAR','family']
  ];
- const openItem=(id:string)=>{if(id==='advanced'){choose('advanced');return}if(!mode)choose('family');go(id)};
+ const openItem=(id:string)=>{if(id==='more'){setMoreOpen(true);return}if(id==='advanced'){choose('advanced');return}if(!mode&&id!=='home')choose('family');go(id)};
  return <div className={'sos-experience '+(advanced?'theme-advanced':mode?'theme-family':'theme-neutral')}>
   <SOSIconSprite/>
   <header className="sos-header">
