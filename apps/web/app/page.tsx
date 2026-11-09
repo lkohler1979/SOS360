@@ -1,35 +1,50 @@
 'use client';
 import { useEffect, useState } from 'react';
-type KitItem = { id: string; label: string; checked: boolean };
-const initial: KitItem[] = [
- {id:'water',label:'Água potável (reserva por pessoa)',checked:false},
- {id:'food',label:'Alimentos não perecíveis',checked:false},
- {id:'light',label:'Lanterna e pilhas',checked:false},
- {id:'radio',label:'Rádio portátil',checked:false},
- {id:'meds',label:'Medicamentos de uso contínuo',checked:false},
- {id:'firstaid',label:'Kit básico de primeiros socorros',checked:false},
- {id:'docs',label:'Cópias de documentos e contatos',checked:false},
- {id:'power',label:'Carregador portátil',checked:false},
- {id:'hygiene',label:'Itens de higiene',checked:false},
- {id:'clothes',label:'Roupas e proteção climática',checked:false}
+
+type Item={id:string;label:string;checked:boolean};
+type Contact={id:string;name:string;phone:string;role:string};
+type Plan={meetingPoint:string;outsideContact:string;notes:string};
+type Data={kit:Item[];contacts:Contact[];plan:Plan};
+const defaults:Data={kit:[
+{id:'agua',label:'Água potável para 72 horas',checked:false},
+{id:'alimentos',label:'Alimentos não perecíveis',checked:false},
+{id:'lanterna',label:'Lanterna e pilhas de reserva',checked:false},
+{id:'radio',label:'Rádio portátil',checked:false},
+{id:'medicamentos',label:'Medicamentos pessoais e prescrições',checked:false},
+{id:'primeiros',label:'Kit de primeiros socorros',checked:false},
+{id:'documentos',label:'Cópias de documentos importantes',checked:false},
+{id:'energia',label:'Carregador portátil',checked:false},
+{id:'higiene',label:'Itens de higiene',checked:false},
+{id:'roupas',label:'Roupas adequadas e cobertor',checked:false}
+],contacts:[],plan:{meetingPoint:'',outsideContact:'',notes:''}};
+const academy=[
+{title:'Como montar um kit de 72 horas',body:'Considere água, alimentação, iluminação, rádio, medicamentos, documentos e itens específicos de crianças, idosos e animais. Revise a validade e adapte quantidades ao clima e às recomendações da Defesa Civil.'},
+{title:'Plano de comunicação familiar',body:'Defina dois pontos de encontro: um próximo de casa e outro fora do bairro. Escolha um contato fora da região e combine como informar localização e segurança quando houver falha de comunicação.'},
+{title:'Alertas e evacuação',body:'Acompanhe os alertas oficiais da Defesa Civil. Conheça as rotas de saída e evite áreas alagadas, encostas instáveis, fios caídos e estruturas danificadas. Não retorne antes de liberação oficial.'},
+{title:'Segurança na natureza',body:'Informe seu itinerário a alguém, verifique previsão e restrições locais, leve água e navegação redundante. Se estiver perdido, evite deslocamentos arriscados e busque auxílio dos serviços responsáveis.'}
 ];
-export default function Home() {
- const [items,setItems]=useState<KitItem[]>(initial);
- const [ready,setReady]=useState(false);
- useEffect(()=>{try{const raw=localStorage.getItem('sos360:kit72h:v1');if(raw){const parsed=JSON.parse(raw);if(Array.isArray(parsed)&&parsed.length===initial.length&&parsed.every((x:KitItem)=>typeof x.checked==='boolean'))setItems(initial.map((x,i)=>({...x,checked:parsed[i].checked})));}}catch{}setReady(true)},[]);
- useEffect(()=>{if(ready)localStorage.setItem('sos360:kit72h:v1',JSON.stringify(items))},[items,ready]);
- const done=items.filter(x=>x.checked).length;
- return <main style={{maxWidth:980,margin:'auto',padding:'40px 20px',lineHeight:1.5}}>
- <header style={{display:'flex',alignItems:'center',justifyContent:'space-between',gap:12,flexWrap:'wrap'}}><strong style={{fontSize:24}}>🛡️ SOS360 <small style={{fontSize:12,color:'#54735f'}}>BETA</small></strong><span>Preparação para famílias e aventuras</span></header>
- <section style={{padding:'56px 0 32px'}}><h1 style={{fontSize:'clamp(32px,6vw,54px)',marginBottom:12}}>Prepare-se hoje.<br/>Sobreviva amanhã.</h1><p style={{fontSize:19,maxWidth:700}}>Organize seu kit de emergência de 72 horas e acompanhe seu progresso. Os dados desta demonstração ficam somente neste navegador.</p></section>
- <section style={{background:'white',borderRadius:18,padding:24,boxShadow:'0 6px 30px #132a2812'}}>
- <h2 style={{marginTop:0}}>Meu kit de emergência — 72 horas</h2><p>Checklist inicial para revisão e personalização conforme as necessidades da família.</p>
- <div role="progressbar" aria-valuenow={done} aria-valuemin={0} aria-valuemax={items.length} aria-label="Progresso do kit" style={{height:12,borderRadius:8,background:'#e4ebe7',overflow:'hidden'}}><div style={{height:'100%',width:(done/items.length*100)+'%',background:'#2b8057'}}/></div>
- <p><strong>{done} de {items.length}</strong> itens preparados ({Math.round(done/items.length*100)}%)</p>
- <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(260px,1fr))',gap:10}}>{items.map(item=><label key={item.id} style={{display:'flex',gap:12,alignItems:'center',padding:12,border:'1px solid #dbe6e0',borderRadius:10,cursor:'pointer'}}><input type="checkbox" checked={item.checked} onChange={()=>setItems(current=>current.map(x=>x.id===item.id?{...x,checked:!x.checked}:x))} style={{width:19,height:19}}/><span style={{textDecoration:item.checked?'line-through':'none'}}>{item.label}</span></label>)}</div>
- <button onClick={()=>{if(window.confirm('Reiniciar checklist do kit?'))setItems(initial)}} style={{marginTop:20,border:'1px solid #8aa99a',background:'white',borderRadius:8,padding:'10px 16px',cursor:'pointer'}}>Reiniciar checklist</button>
- </section>
- <section style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(200px,1fr))',gap:16,marginTop:28}}>{[['SOS Família','Planos e contatos de emergência','Em desenvolvimento'],['SOS Academy','Guias e treinamentos revisados','Em desenvolvimento'],['SOS Advanced','Bushcraft e aventuras','Em desenvolvimento']].map(([title,desc,status])=><article key={title} style={{background:'white',borderRadius:12,padding:20}}><h3>{title}</h3><p>{desc}</p><small>{status}</small></article>)}</section>
- <footer style={{marginTop:40,fontSize:13,color:'#52615b'}}>Beta demonstrativa. Não substitui orientações oficiais ou serviços de emergência. Em perigo imediato, acione os serviços locais competentes.</footer>
- </main>;
+const inputStyle:React.CSSProperties={padding:'11px 12px',border:'1px solid #b8c9c1',borderRadius:9,width:'100%',boxSizing:'border-box',font:'inherit'};
+const buttonStyle:React.CSSProperties={background:'#166449',color:'white',padding:'11px 16px',border:0,borderRadius:9,cursor:'pointer',fontWeight:650};
+const panel:React.CSSProperties={background:'white',padding:24,borderRadius:16,boxShadow:'0 3px 20px #0d31200c'};
+function uid(){return Math.random().toString(36).slice(2)+Date.now().toString(36)}
+function validData(x:unknown):x is Data{if(!x||typeof x!=='object')return false;const d=x as Data;return Array.isArray(d.kit)&&d.kit.every(i=>typeof i.id==='string'&&typeof i.label==='string'&&typeof i.checked==='boolean')&&Array.isArray(d.contacts)&&d.contacts.every(c=>typeof c.id==='string'&&typeof c.name==='string'&&typeof c.phone==='string'&&typeof c.role==='string')&&!!d.plan&&typeof d.plan.meetingPoint==='string'&&typeof d.plan.outsideContact==='string'&&typeof d.plan.notes==='string'}
+export default function Home(){
+ const [data,setData]=useState<Data>(defaults),[loaded,setLoaded]=useState(false),[tab,setTab]=useState('kit');
+ const [itemText,setItemText]=useState(''),[name,setName]=useState(''),[phone,setPhone]=useState(''),[role,setRole]=useState(''),[notice,setNotice]=useState('');
+ useEffect(()=>{try{const saved=localStorage.getItem('sos360:v1');if(saved){const parsed:unknown=JSON.parse(saved);if(validData(parsed))setData(parsed)}else{const legacy=localStorage.getItem('sos360:kit72h:v1');if(legacy){const old=JSON.parse(legacy) as Item[];if(Array.isArray(old))setData({...defaults,kit:defaults.kit.map((x,i)=>({...x,checked:Boolean(old[i]?.checked)}))})}}}catch{}setLoaded(true)},[]);
+ useEffect(()=>{if(loaded){try{localStorage.setItem('sos360:v1',JSON.stringify(data));setNotice('Dados salvos neste dispositivo')}catch{setNotice('Armazenamento indisponível; exporte uma cópia')}}},[data,loaded]);
+ const done=data.kit.filter(i=>i.checked).length;
+ const exportData=()=>{const blob=new Blob([JSON.stringify({version:1,exportedAt:new Date().toISOString(),data},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='sos360-backup.json';a.click();URL.revokeObjectURL(url)};
+ const importData=async(file?:File)=>{if(!file)return;if(file.size>1024*1024){setNotice('Arquivo excede 1 MB');return}try{const raw=JSON.parse(await file.text()) as {data?:unknown};if(!validData(raw.data))throw Error();if(raw.data.kit.length>300||raw.data.contacts.length>100)throw Error();setData(raw.data);setNotice('Backup importado')}catch{setNotice('Arquivo inválido. Nenhuma alteração realizada')}};
+ return <main style={{maxWidth:1080,margin:'auto',padding:'28px 20px 60px',lineHeight:1.55}}>
+ <header style={{display:'flex',justifyContent:'space-between',alignItems:'center',flexWrap:'wrap',gap:10}}><strong style={{fontSize:25}}>🛡️ SOS360 <span style={{fontSize:12,color:'#18724d'}}>VERSÃO 1.0 LOCAL</span></strong><span style={{fontSize:13,color:'#476257'}}>Preparação familiar e sobrevivência</span></header>
+ <section style={{padding:'40px 0 20px'}}><h1 style={{fontSize:'clamp(32px,5vw,52px)',margin:'0 0 8px'}}>Sua família mais preparada.</h1><p style={{fontSize:18,maxWidth:780}}>Organize seu kit, contatos e plano familiar. Tudo funciona sem cadastro nesta versão local, com salvamento neste navegador.</p></section>
+ <nav aria-label="Módulos SOS360" style={{display:'flex',gap:8,flexWrap:'wrap',marginBottom:22}}>{[['kit','🎒 Kit 72h'],['family','🏠 Plano familiar'],['contacts','📞 Contatos'],['academy','📚 Academy'],['backup','💾 Backup']].map(([id,label])=><button key={id} onClick={()=>setTab(id)} aria-pressed={tab===id} style={{...buttonStyle,background:tab===id?'#166449':'#e2ebe6',color:tab===id?'white':'#194736'}}>{label}</button>)}</nav>
+ {tab==='kit'&&<section style={panel}><h2>Kit de emergência de 72 horas</h2><p>Lista editável. Adapte os itens à quantidade de pessoas, necessidades de saúde e recomendações oficiais da sua região.</p><div role="progressbar" aria-label="Progresso do kit" aria-valuemin={0} aria-valuemax={data.kit.length} aria-valuenow={done} style={{height:12,background:'#e3ebe6',borderRadius:9,overflow:'hidden'}}><div style={{width:(data.kit.length?done/data.kit.length*100:0)+'%',height:'100%',background:'#26805b'}}/></div><p><strong>{done}/{data.kit.length}</strong> itens preparados</p><div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(270px,1fr))',gap:10}}>{data.kit.map(item=><div key={item.id} style={{border:'1px solid #d9e5de',borderRadius:10,padding:12,display:'flex',alignItems:'center',gap:10}}><label style={{display:'flex',gap:10,alignItems:'center',flex:1,cursor:'pointer'}}><input type="checkbox" checked={item.checked} onChange={()=>setData(d=>({...d,kit:d.kit.map(x=>x.id===item.id?{...x,checked:!x.checked}:x)}))}/><span style={{textDecoration:item.checked?'line-through':'none'}}>{item.label}</span></label><button title={'Remover '+item.label} aria-label={'Remover '+item.label} onClick={()=>setData(d=>({...d,kit:d.kit.filter(x=>x.id!==item.id)}))} style={{border:0,background:'transparent',cursor:'pointer',color:'#a33'}}>✕</button></div>)}</div><form onSubmit={e=>{e.preventDefault();const label=itemText.trim();if(!label)return;setData(d=>({...d,kit:[...d.kit,{id:uid(),label,checked:false}]}));setItemText('')}} style={{display:'flex',gap:8,marginTop:20,flexWrap:'wrap'}}><input aria-label="Novo item" maxLength={120} value={itemText} onChange={e=>setItemText(e.target.value)} placeholder="Adicionar item personalizado" style={{...inputStyle,flex:'1 1 220px',width:'auto'}}/><button style={buttonStyle}>Adicionar</button></form><button onClick={()=>{if(confirm('Desmarcar todos os itens?'))setData(d=>({...d,kit:d.kit.map(x=>({...x,checked:false}))}))}} style={{marginTop:15,padding:9,border:'1px solid #bbb',borderRadius:8,cursor:'pointer'}}>Desmarcar todos</button></section>}
+ {tab==='family'&&<section style={panel}><h2>Plano de emergência familiar</h2><p>Combine as informações com todas as pessoas da casa e pratique o plano.</p>{[['meetingPoint','Pontos de encontro (próximo e alternativo)'],['outsideContact','Contato de referência fora da região'],['notes','Rotas de saída, necessidades especiais e observações']].map(([key,label])=><label key={key} style={{display:'block',marginBottom:16,fontWeight:600}}>{label}<textarea rows={key==='notes'?5:2} maxLength={2000} value={data.plan[key as keyof Plan]} onChange={e=>setData(d=>({...d,plan:{...d.plan,[key]:e.target.value}}))} style={{...inputStyle,marginTop:5,resize:'vertical'}}/></label>)}<p style={{color:'#416255'}}>As alterações são salvas automaticamente neste navegador.</p></section>}
+ {tab==='contacts'&&<section style={panel}><h2>Contatos importantes</h2><p>Cadastre pessoas de confiança e contatos de apoio. Em emergências, confirme os números oficiais locais.</p><form onSubmit={e=>{e.preventDefault();if(!name.trim()||!phone.trim())return;setData(d=>({...d,contacts:[...d.contacts,{id:uid(),name:name.trim(),phone:phone.trim(),role:role.trim()}]}));setName('');setPhone('');setRole('')}} style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(200px,1fr))',gap:10,marginBottom:20}}><input aria-label="Nome" required maxLength={100} placeholder="Nome" style={inputStyle} value={name} onChange={e=>setName(e.target.value)}/><input aria-label="Telefone" required maxLength={40} placeholder="Telefone" style={inputStyle} value={phone} onChange={e=>setPhone(e.target.value)}/><input aria-label="Vínculo ou função" maxLength={100} placeholder="Vínculo ou função" style={inputStyle} value={role} onChange={e=>setRole(e.target.value)}/><button style={buttonStyle}>Salvar contato</button></form>{data.contacts.length===0?<p>Nenhum contato cadastrado.</p>:<div style={{display:'grid',gap:10}}>{data.contacts.map(c=><div key={c.id} style={{border:'1px solid #d9e5de',padding:12,borderRadius:9,display:'flex',alignItems:'center',justifyContent:'space-between',gap:12}}><div><strong>{c.name}</strong> {c.role&&<small>({c.role})</small>}<div>{c.phone}</div></div><button onClick={()=>setData(d=>({...d,contacts:d.contacts.filter(x=>x.id!==c.id)}))} style={{border:'1px solid #d2b2b2',borderRadius:8,padding:8,background:'white',cursor:'pointer'}}>Excluir</button></div>)}</div>}</section>}
+ {tab==='academy'&&<section style={panel}><h2>SOS Academy — orientações iniciais</h2><p>Conteúdo educativo geral. Consulte a Defesa Civil, o Corpo de Bombeiros e autoridades locais para protocolos oficiais.</p><div style={{display:'grid',gap:16}}>{academy.map(a=><article key={a.title} style={{borderBottom:'1px solid #dce6e0',paddingBottom:14}}><h3>{a.title}</h3><p>{a.body}</p></article>)}</div></section>}
+ {tab==='backup'&&<section style={panel}><h2>Exportação e recuperação de dados</h2><p>Seus dados ficam neste dispositivo. Faça backup regularmente: limpar os dados do navegador pode apagar suas informações.</p><button style={buttonStyle} onClick={exportData}>Exportar backup JSON</button><div style={{marginTop:22}}><label><strong>Importar backup</strong><input aria-label="Importar arquivo JSON" type="file" accept=".json,application/json" style={{display:'block',marginTop:8}} onChange={e=>{void importData(e.target.files?.[0]);e.target.value=''}}/></label></div><p style={{fontSize:13}}>A importação substitui os dados atuais. Guarde o arquivo em local protegido, pois ele pode conter informações pessoais.</p></section>}
+ <p role="status" style={{fontSize:12,color:'#416255',marginTop:20}}>{loaded?notice:'Carregando dados locais...'}</p><footer style={{fontSize:13,color:'#586b61',borderTop:'1px solid #d9e4de',paddingTop:20}}>SOS360 1.0 Local • Funcionalidades básicas sem conta e sem sincronização • Não é um canal de socorro. Em perigo imediato, procure os serviços de emergência oficiais.</footer>
+ </main>
 }
