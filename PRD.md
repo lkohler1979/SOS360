@@ -22,7 +22,7 @@ SOS360 é um aplicativo mobile-first de preparação para emergências, proteç�
 
 ## Estado real em 2026-11-09
 IMPLEMENTADO NO CÓDIGO: Next.js 15/React 19, Fastify 5, Prisma 6 inicial; dashboard responsivo vermelho/verde; kit 72h editável com progresso; plano familiar; contatos; quatro guias Academy; backup/importação JSON; armazenamento localStorage; novo módulo Água e Alimentação (pessoas, dias, estimativa de litros e refeições, estoque e checklist). API com somente GET /health e GET /api/v1/modules. Banco Prisma apenas modelado (User/UserKit), sem PostgreSQL conectado.
-O deploy anterior do frontend e API estava SUCCESS; o novo módulo Água e Alimentação estava em BUILDING no último check (deployment 6df0a391-17b6-4432-b3e9-9f7c50a25a13). É obrigatório verificar o estado atualizado.
+Na verificação de 2026-11-09, frontend e API estavam ONLINE; o deploy web do módulo Água e Alimentação (ID 6df0a391-17b6-4432-b3e9-9f7c50a25a13) terminou SUCCESS. Isso confirma o deploy, mas não testes completos de interface ou HTTP externo.
 NÃO IMPLEMENTADO: login real, dados de família por usuário no banco, sincronização, offline PWA completo, CMS, cursos, Advanced operacional, IA, CI/testes E2E e revisão de segurança. Versão atual é protótipo funcional local-first, NÃO 1.0 servidor pronta.
 
 ## Requisitos da v1.0 de produção
