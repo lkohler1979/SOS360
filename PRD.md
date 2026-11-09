@@ -43,3 +43,16 @@ Web service 08bc6294-8133-4d55-898e-7f8aca0bfeff, domínio sos360.up.railway.app
 API service aeb4f3cb-56ee-4634-bb76-45b7f45f5367, domínio sos360-beta-api-production.up.railway.app. Verificar a porta real.
 SevenBible é outro serviço no mesmo projeto: NÃO modificar.
 Documentação complementar: EPICS.md, TASKS.md, AGENTS.md.
+
+
+## Adendo de requisitos — interface aprovada e entregue em ZIP (2026-11-09)
+A partir do ZIP original `sos360-interface.zip` enviado pelo usuário, o **fluxo visual de referência é uma decisão de produto**. Leia [ROADMAP.md](ROADMAP.md) antes de alterar a navegação.
+
+- Tela inicial neutra com logo, escolha Family vermelho / Advanced verde e 6 atalhos.
+- Cada área tem 6 itens especificados literalmente no ZIP, foto de topo e tema completo correspondente.
+- Última escolha salva localmente; rodapé fixo **Início, Academy, Mapas, Mais**; Início dentro do módulo volta à home do próprio módulo; seta voltar retorna à escolha de acesso.
+- Mais usa a paleta ativa em tela inteira, desenho cartográfico decorativo, 14 ícones SVG e 10 cards fotográficos.
+- O app deve preservar kit, plano, contatos, água/alimentos, guias e backup — não substituir trabalho funcional por placeholders.
+- Itens ainda não funcionais devem informar claramente estágio; mapa/alerta não devem alegar dados em tempo real.
+- Imagens e screenshots originais são recursos do ZIP e devem ser integrados ao repositório; esta branch ainda não os contém, embora navegação, estilo e símbolos SVG estejam implementados.
+- A referência de UI inclui novos recursos não concluídos: segurança doméstica, necessidades de crianças e idosos, comunicação, fogo, abrigo, navegação/mapas e riscos/alertas. Critérios e fases em [ROADMAP.md](ROADMAP.md).
