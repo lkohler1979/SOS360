@@ -16,10 +16,12 @@ const validState = (x: unknown): boolean => {
   if (x.kit.length > 300 || x.contacts.length > 100) return false;
   if (!x.kit.every((i: unknown) => isRecord(i) && text(i.id, 100) && text(i.label, 120) && typeof i.checked === 'boolean')) return false;
   if (!x.contacts.every((c: unknown) => isRecord(c) && text(c.id, 100) && text(c.name, 100) && text(c.phone, 40) && text(c.role, 100))) return false;
-  if (!['meetingPoint','outsideContact','notes'].every(k => text(x.plan[k], 2000))) return false;
+  const plan = x.plan as Record<string, unknown>;
+  if (!['meetingPoint','outsideContact','notes'].every(k => text(plan[k], 2000))) return false;
   const s = x.supplies;
-  if (!['people','days','waterLiters','meals'].every(k => typeof s[k] === 'number' && Number.isFinite(s[k]) && s[k] >= 0)) return false;
-  if (s.people < 1 || s.people > 30 || s.days < 1 || s.days > 14 || s.waterLiters > 100000 || s.meals > 100000 || !isRecord(s.tasks)) return false;
+  if (!['people','days','waterLiters','meals'].every(k => typeof s[k] === 'number' && Number.isFinite(s[k]) && (s[k] as number) >= 0)) return false;
+  const people = s.people as number, days = s.days as number, water = s.waterLiters as number, meals = s.meals as number;
+  if (people < 1 || people > 30 || days < 1 || days > 14 || water > 100000 || meals > 100000 || !isRecord(s.tasks)) return false;
   return Object.keys(s.tasks).length <= 50 && Object.values(s.tasks).every(x => typeof x === 'boolean');
 };
 const sql = [
@@ -152,7 +154,7 @@ app.put('/api/v1/state', async (req,reply) => {
   }
   return {ok:true,version:result.rows[0].version};
 });
-app.setErrorHandler((error,req,reply)=>{req.log.error(error);reply.code(error.statusCode && error.statusCode<500?error.statusCode:500).send({error:'request_failed'});});
+app.setErrorHandler((error,req,reply)=>{req.log.error(error);const status = isRecord(error) && typeof error.statusCode === 'number' ? error.statusCode : 500;reply.code(status < 500 ? status : 500).send({error:'request_failed'});});
 async function main() {
   if (pool) await migrate();
   const port = Number(process.env.PORT ?? 3001);
