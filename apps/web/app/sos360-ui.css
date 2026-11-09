@@ -46,16 +46,23 @@
 .sos-icon-grid .sos-icon{width:28px;height:28px}
 @media(max-width:720px){.sos-module-photo .sos-icon{width:104px;height:104px}}
 
-/* Functional photo previews. This small montage is composed exclusively of the 3 hero
-   and 10 card photographs in the user's uploaded interface package.
-   The full-resolution 13 source images remain an enhancement task (SOS-050). */
-.sos-welcome{background-image:linear-gradient(90deg,#081519f2 0%,#0d1d24a9 48%,#07101640),url('/interface/sprite-mini.jpg');background-size:cover,300% 340%;background-position:center,0% 0%}
-.sos-module-hero.is-family{background-image:linear-gradient(90deg,#7a0e0ef5 0%,#7a0e0ed9 46%,#7a0e0e28),url('/interface/sprite-mini.jpg');background-size:cover,300% 340%;background-position:center,50% 0%}
-.sos-module-hero.is-advanced{background-image:linear-gradient(90deg,#0f4424f5 0%,#0f4424d9 46%,#0f442428),url('/interface/sprite-mini.jpg');background-size:cover,300% 340%;background-position:center,100% 0%}
-.sos-photo-tile{background-image:linear-gradient(0deg,#050809bd,transparent 70%),url('/interface/sprite-mini.jpg')!important;background-size:cover,500% 283.333%;background-repeat:no-repeat}
-.sos-photo-tile:nth-child(5n+1){background-position:center,0% 45.4545%}
-.sos-photo-tile:nth-child(5n+2){background-position:center,25% 45.4545%}
-.sos-photo-tile:nth-child(5n+3){background-position:center,50% 45.4545%}
-.sos-photo-tile:nth-child(5n+4){background-position:center,75% 45.4545%}
-.sos-photo-tile:nth-child(5n){background-position:center,100% 45.4545%}
-.sos-photo-tile:nth-child(n+6):nth-child(-n+10){background-position-y:center,100%}
+/* Final approved assets: individual photographs replace the temporary montage. */
+.sos-welcome {background-image:linear-gradient(90deg,#081519f0 0%,#0d1d24ad 48%,#07101638),url('/interface/img/hero-home.jpg');background-size:cover;background-position:center}
+.sos-module-hero.is-family {background-image:linear-gradient(90deg,#7a0e0ef5 0%,#7a0e0ed8 48%,#7a0e0e28),url('/interface/img/hero-family.jpg');background-size:cover;background-position:center}
+.sos-module-hero.is-advanced {background-image:linear-gradient(90deg,#0f4424f2 0%,#0f4424d8 48%,#0f442428),url('/interface/img/hero-advanced.jpg');background-size:cover;background-position:center}
+.sos-photo-tile {background-size:cover;background-position:center;background-repeat:no-repeat}
+.sos-photo-tile:nth-child(1) {background-image:linear-gradient(0deg,#050809bd,transparent 75%),url('/interface/img/tile-kit72h.jpg')}
+.sos-photo-tile:nth-child(2) {background-image:linear-gradient(0deg,#050809bd,transparent 75%),url('/interface/img/tile-navegacao.jpg')}
+.sos-photo-tile:nth-child(3) {background-image:linear-gradient(0deg,#050809bd,transparent 75%),url('/interface/img/tile-agua.jpg')}
+.sos-photo-tile:nth-child(4) {background-image:linear-gradient(0deg,#050809bd,transparent 75%),url('/interface/img/tile-fogo.jpg')}
+.sos-photo-tile:nth-child(5) {background-image:linear-gradient(0deg,#050809bd,transparent 75%),url('/interface/img/tile-alimentacao.jpg')}
+.sos-photo-tile:nth-child(6) {background-image:linear-gradient(0deg,#050809bd,transparent 75%),url('/interface/img/tile-abrigo.jpg')}
+.sos-photo-tile:nth-child(7) {background-image:linear-gradient(0deg,#050809bd,transparent 75%),url('/interface/img/tile-primeiros-socorros.jpg')}
+.sos-photo-tile:nth-child(8) {background-image:linear-gradient(0deg,#050809bd,transparent 75%),url('/interface/img/tile-comunicacao.jpg')}
+.sos-photo-tile:nth-child(9) {background-image:linear-gradient(0deg,#050809bd,transparent 75%),url('/interface/img/tile-riscos.jpg')}
+.sos-photo-tile:nth-child(10) {background-image:linear-gradient(0deg,#050809bd,transparent 75%),url('/interface/img/tile-preparacao-familiar.jpg')}
+.sos-brand {display:flex;align-items:flex-start;flex-direction:column;gap:4px;max-width:230px}
+.sos-brand img {display:block;width:min(190px,100%);height:auto;max-height:66px;object-fit:contain;object-position:left center}
+.sos-brand small {font-size:8px;line-height:1.4;margin:0;letter-spacing:1.2px}
+.sos-module-photo {display:none}
+@media(max-width:720px) {.sos-brand img {width:148px;max-height:48px}.sos-brand small {font-size:6px}}
