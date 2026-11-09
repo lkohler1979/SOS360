@@ -47,5 +47,5 @@ Testar o módulo Água e Alimentação em navegador e backup (deploy já SUCCESS
 
 ## Interface de referência aprovada (2026-11-09)
 - [ROADMAP.md](ROADMAP.md) inclui a matriz de telas e funcionalidades exigidas pelo ZIP `sos360-interface.zip` e o plano de integração.
-- Código de adaptação: branch `feature/visual-navigation-family-advanced`, com navegação e SVGs. **Os 13 arquivos de foto do ZIP ainda devem ser adicionados ao repo.**
+- Código de adaptação: branch `feature/visual-navigation-family-advanced`, com navegação e SVGs. **Uma montagem JPEG reduzida das 13 fotos do ZIP está adicionada como prévia**, mas os 13 arquivos individuais em qualidade final ainda devem ser integrados.
 - O trabalho de API/PostgreSQL/login permanece separado em `feature/postgres-auth-sync-foundation`, sem integração pública validada.
