@@ -75,7 +75,7 @@ async function proxy(req: NextRequest, params: Params['params'], method: 'GET' |
     const response = NextResponse.json(safePayload, { status: upstream.status });
     response.headers.set('Cache-Control', 'no-store');
     if (tokenFromApi) secureCookie(response, tokenFromApi);
-    if (isLogout) response.cookies.delete(COOKIE_NAME);
+    if (isLogout) response.cookies.set(COOKIE_NAME, '', { path: '/api/cloud', httpOnly: true, sameSite: 'strict', secure: process.env.NODE_ENV === 'production', maxAge: 0 });
     return response;
   } catch {
     return NextResponse.json(
