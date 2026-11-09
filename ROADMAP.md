@@ -35,7 +35,7 @@ Fonte de design: ZIP enviado pelo usuário **sos360-interface.zip** com index.ht
 | Água / Alimentos | Módulo suprimentos existente | Estoque e validade |
 | Fogo / Abrigo / Primeiros Socorros | Atalhos de Academy sem conteúdos específicos | Bibliotecas curadas e guias progressivos |
 | Preferência visual salva | LocalStorage sos360:last-area; ZIP usa sos360.module | Migrar de chave do protótipo, teste de reload |
-| Fotos de topo e cards | Montagem de baixa resolução com as 13 fotos do ZIP publicada na branch e aplicada por CSS | Publicar 13 assets individuais otimizados em apps/web/public/interface/img/ e remover dependência do sprite de preview |
+| Fotos de topo e cards | 13 fotografias individuais atualizadas enviadas pelo usuário, otimizadas, nomeadas e adicionadas ao repo; CSS apontando para cada arquivo | Validar visualmente em mobile/desktop e CDN/cache do deploy |
 | SVG do ZIP | Símbolos SVG portados para componente SOSIcon | Revisar correspondência exata com fonte e todos os módulos |
 | Desktop/mobile | CSS responsivo em branch | Testes em iOS/Android e leitura por teclado/leitor de tela |
 
@@ -46,7 +46,8 @@ Fonte de design: ZIP enviado pelo usuário **sos360-interface.zip** com index.ht
 - [x] Estruturar escolha de área, menus, 6 cards por área, rodapé e Mais.
 - [x] Adicionar identidade escura/vermelho/verde e SVG vectorial reutilizável.
 - [x] Integrar preview de foto (sprite JPEG de 13 imagens derivadas do ZIP) ao dashboard.
-- [ ] Incluir as 13 fotos originais do ZIP, otimizadas, com dimensões/alt, e commitá-las individualmente no repo.
+- [x] Adicionar 13 fotos individuais atualizadas e 7 assets oficiais de marca; atualizar CSS, cabeçalho, favicon e manifesto.
+- [ ] Validar recortes, qualidade e responsividade reais após deploy.
 - [ ] Verificar todas as telas comparando com screenshots do ZIP, inclusive menu Mais.
 - [ ] Corrigir eventuais erros de TS/compilação, testar kit/contatos/plano/suprimentos/backup.
 - [ ] Revisar WCAG, foco/teclado/touch, evitar renderização enganosa de placeholders.
