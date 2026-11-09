@@ -21,7 +21,7 @@ Atualizado em 2026-11-09. Legenda: [x] concluído NO CÓDIGO (não necessariamen
 - [x] SOS-014 Academy: quatro guias introdutórios.
 - [x] SOS-015 Backup export/import JSON; migração local básica.
 - [x] SOS-016 Água e Alimentação: pessoas/dias, litros/refeições, estoque, faltantes, checklist e persistência local no código.
-- [ ] SOS-017 Verificar deploy mais recente do módulo Água/Alimentação; testar UI, valores, recuperação de dados e backup/importação.
+- [ ] SOS-017 Deploy mais recente de Água/Alimentação confirmado SUCCESS em 2026-11-09; pendentes testes de UI, valores, recuperação de dados e backup/importação.
 - [ ] SOS-018 Corrigir validação de backups para incluir versões e dados novos com testes.
 - [ ] SOS-019 Integrar assets otimizados de imagem (mockup foi aprovado mas imagens não estão no repo).
 - [ ] SOS-020 Revisar acessibilidade, contraste, textos, navegabilidade e experiência mobile.
@@ -58,4 +58,4 @@ Atualizado em 2026-11-09. Legenda: [x] concluído NO CÓDIGO (não necessariamen
 Não declarar pronta até SOS-006/008, SOS-021–029, SOS-030/031, SOS-034–036 passarem e testes de integração confirmarem isolamento, sincronização e recuperação. O MVP local já pode ser demonstrado, porém não substitui os requisitos acima.
 
 ## Status Railway na escrita
-Web e API tiveram releases anteriores SUCCESS; web iniciou um NOVO build após Água e Alimentação (deploy ID 6df0a391-17b6-4432-b3e9-9f7c50a25a13). Verificar estado antes de afirmar que o módulo está online.
+Web e API ONLINE; o novo deploy web de Água e Alimentação (ID 6df0a391-17b6-4432-b3e9-9f7c50a25a13) finalizou SUCCESS. A navegação real e os fluxos ainda exigem smoke/E2E.
