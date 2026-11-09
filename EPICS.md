@@ -65,3 +65,8 @@ Administração, assinaturas, auditoria, métricas de produto, suporte e políti
 
 ## EPIC-12 — Conteúdo e ferramentas das novas áreas [PENDENTE]
 São lacunas da referência visual: Saúde e Primeiros Socorros, Casa Segura, Crianças e Idosos, Navegação/Mapas offline, Abrigo, Água no Campo, Alimentação no Ambiente, equipamentos Advanced, segurança, fogo, comunicação, alertas de risco. Os itens atuais não equivalem a funcionalidades implementadas quando encaminham a Academy ou mostram placeholders. Aceite: conteúdo confiável com fontes, revisão, uso adequado offline e testes.
+
+
+## EPIC-07 — Atualização de execução PostgreSQL e autenticação (2026-11-09)
+**Bloqueado por infraestrutura:** não existe PostgreSQL no Railway do SOS360. A tentativa de criar serviço dedicado falhou por limite de provisionamento do plano Free. Requisitos de backend persistente NÃO podem ser marcados como entregues em produção.
+**Código em branch:** `feature/cloud-storage-integration` com Fastify PostgreSQL/JSONB, login/sessões, proxy de cookie HttpOnly e área de nuvem na interface. Pendente provisionamento, execução de migrações, testes de isolamento, segurança e sincronização multi-dispositivo. Ver tarefas SOS-065–074.
