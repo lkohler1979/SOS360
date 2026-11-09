@@ -86,3 +86,18 @@ Web e API ONLINE; o novo deploy web de Água e Alimentação (ID 6df0a391-17b6-4
 - [x] SOS-064 Inserir fotos reais do ZIP em preview JPEG compacto (montagem 3 hero + 10 tiles) e aplicar aos cartões por CSS. Ver [ROADMAP.md](ROADMAP.md).
 
 **Atenção:** existe trabalho experimental independente em `feature/postgres-auth-sync-foundation`. Autenticação e sincronização ainda NÃO estão prontas; integração posterior deve preservar a interface aprovada e ser submetida a revisão/testes de segurança.
+
+## Sprint Database & Sync — Railway blocker (2026-11-09)
+
+- [x] SOS-065 Verificar projeto Railway de produção: serviços atuais são somente `sos360-beta-web` e `sos360-beta-api`; sem PostgreSQL nem volume.
+- [x] SOS-066 Tentar template oficial Postgres e criação dedicada `sos360-postgres`; o Railway recusou a criação com `Free plan resource provision limit exceeded`. **Banco NÃO provisionado**.
+- [x] SOS-067 Preparar API PostgreSQL para cadastro, login, sessões com hash, estado JSONB isolado por usuário e versionamento de gravações no código da branch.
+- [x] SOS-068 Preparar frontend para vinculação consentida, login com cookie HttpOnly, sincronização automática após vincular, indicação de conflitos e backup local preservado no código da branch.
+- [ ] SOS-069 Liberar recursos no Railway (upgrade/plano ou capacidade) e efetivamente provisionar PostgreSQL com volume persistente; evitar qualquer mudança em SevenBible.
+- [ ] SOS-070 Configurar `DATABASE_URL` como referência privada `\${{sos360-postgres.DATABASE_URL}}` na API após banco existir, e `SOS360_API_URL` do web para endpoint de API; nunca commitar segredos.
+- [ ] SOS-071 Rodar migrações e validar `GET /health` retorna `database: online`, testar login/logout e dados de usuários distintos.
+- [ ] SOS-072 Testar dispositivos A/B com dados diferentes, migração consentida, conflito de versão e reconexão após offline.
+- [ ] SOS-073 Revisar endurecimento de produção: recuperação de conta, verificação de e-mail, rate limit compartilhado, CSRF, LGPD e política de backup.
+- [ ] SOS-074 Com banco funcionando, publicar frontend/API integrados após testes, atualizar PRD/ROADMAP e validar HTTP/UX públicos.
+
+A interface visual principal e os dados locais de produção devem continuar funcionando até que SOS-069 a SOS-074 estejam concluídas. Não confundir código de recurso em branch com funcionalidade ativa no site.
