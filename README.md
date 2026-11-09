@@ -43,3 +43,9 @@ Front local: http://localhost:3000. API local: http://localhost:3001/health.
 ## Próximo passo prioritário
 
 Testar o módulo Água e Alimentação em navegador e backup (deploy já SUCCESS), adicionar CI e seguir para PostgreSQL/autenticação/API com isolamento seguro de dados. Ver [TASKS.md](TASKS.md).
+
+
+## Interface de referência aprovada (2026-11-09)
+- [ROADMAP.md](ROADMAP.md) inclui a matriz de telas e funcionalidades exigidas pelo ZIP `sos360-interface.zip` e o plano de integração.
+- Código de adaptação: branch `feature/visual-navigation-family-advanced`, com navegação e SVGs. **Os 13 arquivos de foto do ZIP ainda devem ser adicionados ao repo.**
+- O trabalho de API/PostgreSQL/login permanece separado em `feature/postgres-auth-sync-foundation`, sem integração pública validada.
